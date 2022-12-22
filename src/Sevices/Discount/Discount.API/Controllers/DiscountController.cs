@@ -14,10 +14,12 @@ namespace Discount.API.Controllers
     public class DiscountController : ControllerBase
     {
         private readonly IDiscountRepository _discountRepository;
+        
 
         public DiscountController(IDiscountRepository discountRepository)
         {
             _discountRepository = discountRepository;
+         
         }
 
         [HttpGet("{productName}", Name = "GetDiscount")]
@@ -42,6 +44,9 @@ namespace Discount.API.Controllers
         [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Coupon>> UpdateDiscount([FromBody] Coupon coupon)
         {
+
+          
+
             return Ok(await _discountRepository.UpdateDiscount(coupon));
         }
 
